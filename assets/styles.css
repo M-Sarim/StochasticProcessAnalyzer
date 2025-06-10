@@ -1,0 +1,1524 @@
+/* Advanced CSS for Stochastic Process Analyzer */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Enhanced Root Variables - Professional Academic Color Palette */
+:root {
+    /* Primary Colors - Deep Academic Blue Theme */
+    --primary-color: #1e40af;
+    --primary-light: #3b82f6;
+    --primary-dark: #1e3a8a;
+    --secondary-color: #7c3aed;
+    --secondary-light: #8b5cf6;
+    --secondary-dark: #6d28d9;
+
+    /* Accent Colors - Professional Highlights */
+    --accent-color: #0891b2;
+    --accent-light: #06b6d4;
+    --accent-dark: #0e7490;
+    --success-color: #059669;
+    --success-light: #10b981;
+    --success-dark: #047857;
+    --warning-color: #d97706;
+    --warning-light: #f59e0b;
+    --warning-dark: #b45309;
+    --error-color: #dc2626;
+    --error-light: #ef4444;
+    --error-dark: #b91c1c;
+
+    /* Neutral Colors - Sophisticated Professional Grays */
+    --dark-color: #0f172a;
+    --dark-secondary: #1e293b;
+    --dark-tertiary: #334155;
+    --light-color: #ffffff;
+    --light-secondary: #f8fafc;
+    --light-tertiary: #f1f5f9;
+
+    /* Text Colors - High Contrast for Readability */
+    --text-primary: #0f172a;
+    --text-secondary: #374151;
+    --text-tertiary: #6b7280;
+    --text-light: #9ca3af;
+    --text-white: #ffffff;
+
+    /* Border Colors */
+    --border-color: #e5e7eb;
+    --border-light: #f3f4f6;
+    --border-dark: #d1d5db;
+
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --bg-tertiary: #f3f4f6;
+    --bg-dark: #0f172a;
+    --bg-dark-secondary: #1e293b;
+
+    /* Shadows - Professional Depth */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-colored: 0 10px 15px -3px rgba(30, 64, 175, 0.1), 0 4px 6px -2px rgba(30, 64, 175, 0.05);
+
+    /* Gradients - Professional and Academic */
+    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+    --gradient-accent: linear-gradient(135deg, #0891b2 0%, #1e40af 100%);
+    --gradient-success: linear-gradient(135deg, #059669 0%, #0891b2 100%);
+    --gradient-warning: linear-gradient(135deg, #d97706 0%, #dc2626 100%);
+    --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --gradient-light: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+
+    /* Special Professional Gradients */
+    --gradient-academic: linear-gradient(135deg, #1e40af 0%, #7c3aed 25%, #0891b2 50%, #059669 75%, #d97706 100%);
+    --gradient-ocean: linear-gradient(135deg, #1e40af 0%, #0891b2 50%, #059669 100%);
+    --gradient-royal: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #1e40af 100%);
+    --gradient-professional: linear-gradient(135deg, #0f172a 0%, #1e40af 25%, #7c3aed 50%, #0891b2 75%, #059669 100%);
+}
+
+/* Global Styles */
+* {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Hide Streamlit header/toolbar */
+header[data-testid="stHeader"] {
+    display: none !important;
+}
+
+/* Hide the main toolbar */
+.stToolbar {
+    display: none !important;
+}
+
+/* Hide the deploy button and menu */
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* Hide the entire header section */
+section[data-testid="stHeader"] {
+    display: none !important;
+}
+
+/* Hide any remaining header elements */
+.main-header,
+.streamlit-header,
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+/* Apply Poppins to all Streamlit components */
+.stApp,
+.stApp *,
+.main,
+.main *,
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewContainer"] *,
+.stMarkdown,
+.stMarkdown *,
+.stSelectbox,
+.stSelectbox *,
+.stButton,
+.stButton *,
+.stTextInput,
+.stTextInput *,
+.stNumberInput,
+.stNumberInput *,
+.stTabs,
+.stTabs *,
+.stMetric,
+.stMetric *,
+.stDataFrame,
+.stDataFrame *,
+.stAlert,
+.stAlert *,
+.element-container,
+.element-container * {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+.main {
+    padding: 1.5rem;
+    background: var(--gradient-professional);
+    min-height: 100vh;
+    position: relative;
+}
+
+.main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 15% 85%, rgba(30, 64, 175, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 85% 15%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(8, 145, 178, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main>.block-container {
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+    margin: 1rem;
+}
+
+/* Ensure white background for all content containers */
+.main .block-container,
+.main .element-container,
+.main [data-testid="stMarkdownContainer"] {
+    background-color: transparent !important;
+}
+
+/* Override any inherited styles */
+.main * {
+    background-color: transparent !important;
+}
+
+/* Exception for specific white text headings */
+.main strong:not(.keep-dark),
+.main h3[style*="color: #ffffff"],
+.main h3[style*="color: rgb(255, 255, 255)"],
+.info-text h4 {
+    color: #ffffff !important;
+}
+
+/* Ensure main content text is always visible with stronger selectors */
+.main .block-container *,
+.main .element-container *,
+.main .stMarkdown *,
+.main div,
+.main p,
+.main span,
+.main h1,
+.main h2,
+.main h3,
+.main h4,
+.main h5,
+.main h6 {
+    color: #0f172a !important;
+}
+
+/* Specific targeting for Streamlit elements */
+.main [data-testid="stMarkdownContainer"] *,
+.main [data-testid="stMarkdownContainer"] p,
+.main [data-testid="stMarkdownContainer"] span,
+.main [data-testid="stMarkdownContainer"] div,
+.main [data-testid="stMarkdownContainer"] h1,
+.main [data-testid="stMarkdownContainer"] h2,
+.main [data-testid="stMarkdownContainer"] h3,
+.main [data-testid="stMarkdownContainer"] h4,
+.main [data-testid="stMarkdownContainer"] h5,
+.main [data-testid="stMarkdownContainer"] h6 {
+    color: #0f172a !important;
+}
+
+/* Force all text elements in main content */
+.main .block-container .element-container p {
+    color: #0f172a !important;
+}
+
+.main .block-container .element-container span {
+    color: #0f172a !important;
+}
+
+.main .block-container .element-container div {
+    color: #0f172a !important;
+}
+
+.main .block-container .element-container h1,
+.main .block-container .element-container h2,
+.main .block-container .element-container h3,
+.main .block-container .element-container h4,
+.main .block-container .element-container h5,
+.main .block-container .element-container h6 {
+    color: #0f172a !important;
+}
+
+/* Sidebar text visibility - override main content rules for sidebar */
+.sidebar * {
+    color: var(--text-white) !important;
+}
+
+.sidebar h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6 {
+    color: var(--text-white) !important;
+}
+
+.sidebar p {
+    color: var(--text-white) !important;
+}
+
+.sidebar span {
+    color: var(--text-white) !important;
+}
+
+.sidebar div {
+    color: var(--text-white) !important;
+}
+
+.sidebar label {
+    color: var(--text-white) !important;
+}
+
+/* Specific sidebar component text */
+section[data-testid="stSidebar"] * {
+    color: var(--text-white) !important;
+}
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3,
+section[data-testid="stSidebar"] h4,
+section[data-testid="stSidebar"] h5,
+section[data-testid="stSidebar"] h6 {
+    color: var(--text-white) !important;
+}
+
+section[data-testid="stSidebar"] p {
+    color: var(--text-white) !important;
+}
+
+section[data-testid="stSidebar"] span {
+    color: var(--text-white) !important;
+}
+
+section[data-testid="stSidebar"] div {
+    color: var(--text-white) !important;
+}
+
+section[data-testid="stSidebar"] label {
+    color: var(--text-white) !important;
+}
+
+/* Enhanced Professional Sidebar */
+.sidebar .sidebar-content {
+    padding: 0;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
+    border-right: 3px solid var(--primary-color);
+    box-shadow:
+        4px 0 25px rgba(0, 0, 0, 0.3),
+        inset -1px 0 0 rgba(30, 64, 175, 0.3);
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+/* Hide specific unwanted Streamlit sidebar elements */
+.sidebar .stSelectbox:not(.stRadio .stSelectbox) {
+    display: none !important;
+}
+
+.sidebar .stTextInput:not(.stRadio .stTextInput) {
+    display: none !important;
+}
+
+.sidebar .stButton:not(.stRadio .stButton) {
+    display: none !important;
+}
+
+.sidebar .stFileUploader:not(.stRadio .stFileUploader) {
+    display: none !important;
+}
+
+/* Hide the top navigation section but preserve radio functionality */
+.sidebar>div:first-child>div:first-child:not(:has(.stRadio)) {
+    display: none !important;
+}
+
+/* More specific hiding rules for unwanted sidebar elements */
+.sidebar [data-testid="stSidebar"]>div>div:first-child {
+    display: none !important;
+}
+
+/* Hide any text elements that might be showing file names */
+.sidebar .stMarkdown p {
+    display: none !important;
+}
+
+/* Hide the file browser and navigation elements */
+.sidebar .stSelectbox,
+.sidebar .element-container .stSelectbox {
+    display: none !important;
+}
+
+/* Hide all default streamlit sidebar elements */
+.sidebar .element-container:not(:has(.stRadio)) {
+    display: none !important;
+}
+
+/* Hide the top navigation/file browser section */
+.sidebar>div:first-child>div:first-child>div:first-child {
+    display: none !important;
+}
+
+/* Hide any remaining unwanted elements */
+.sidebar .stMarkdown:not(:has(.sidebar-header)):not(:has(.sidebar-footer)) {
+    display: none !important;
+}
+
+/* Ensure only our custom content shows */
+.sidebar .stRadio {
+    display: block !important;
+}
+
+/* Hide the streamlit default sidebar content */
+section[data-testid="stSidebar"]>div:first-child>div:first-child {
+    display: none !important;
+}
+
+/* Target the specific unwanted elements more aggressively */
+.sidebar .stSelectbox[data-baseweb="select"] {
+    display: none !important;
+}
+
+/* Hide any remaining default navigation */
+.sidebar>div>div>div:first-child:not([data-testid="stRadio"]) {
+    display: none !important;
+}
+
+/* Nuclear option - hide all unwanted sidebar content */
+.sidebar .stSelectbox,
+.sidebar .stTextInput,
+.sidebar .stButton,
+.sidebar .stFileUploader,
+.sidebar .stNumberInput,
+.sidebar .stSlider,
+.sidebar .stCheckbox,
+.sidebar .stMultiselect,
+.sidebar .stDateInput,
+.sidebar .stTimeInput,
+.sidebar .stColorPicker {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Hide the default streamlit navigation completely */
+.sidebar>div>div:first-child {
+    display: none !important;
+}
+
+/* Only show our custom radio and markdown elements */
+.sidebar .element-container:not(:has(.stRadio)):not(:has(.sidebar-header)):not(:has(.sidebar-footer)) {
+    display: none !important;
+}
+
+/* Force hide any remaining unwanted elements */
+.sidebar [data-testid="stSidebar"]>div>div>div:not([data-testid="stRadio"]):not(.sidebar-header):not(.sidebar-footer) {
+    display: none !important;
+}
+
+/* Ultimate solution - hide the entire top section of sidebar */
+section[data-testid="stSidebar"]>div>div:first-child {
+    display: none !important;
+}
+
+/* Hide any selectbox or navigation elements */
+.sidebar div[data-baseweb="select"] {
+    display: none !important;
+}
+
+/* Allow elements after radio button to show */
+.sidebar .stRadio~* {
+    display: block !important;
+}
+
+/* Show only our custom elements - be more specific */
+.sidebar .sidebar-header,
+.sidebar .sidebar-footer,
+.sidebar .stRadio,
+.sidebar .stRadio *,
+.sidebar .element-container:has(.stRadio),
+.sidebar .element-container:has(.stRadio) * {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Ensure radio button functionality */
+.sidebar .stRadio input[type="radio"] {
+    display: block !important;
+    visibility: visible !important;
+    position: absolute;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+/* Make sure radio labels are clickable */
+.sidebar .stRadio label {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.sidebar .sidebar-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-professional);
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.4);
+}
+
+/* Professional Sidebar Header */
+.sidebar-header {
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.2), rgba(124, 58, 237, 0.15));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.sidebar-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.5);
+}
+
+.sidebar-title {
+    color: var(--text-white) !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.75rem !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    background: var(--gradient-aurora);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+.sidebar-subtitle {
+    color: #cbd5e1 !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    opacity: 0.9;
+    letter-spacing: 0.02em;
+}
+
+/* Typography */
+h1 {
+    color: var(--text-primary) !important;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+h2 {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    font-size: 1.875rem;
+    margin: 2rem 0 1rem 0;
+    position: relative;
+    padding-left: 1rem;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* Fix specific heading color for "Powerful Analysis Capabilities" */
+.main [data-testid="stMarkdownContainer"] h2 {
+    color: #0f172a !important;
+}
+
+/* Make specific headings white - very aggressive selectors */
+.main h2 strong,
+.main h3 strong,
+.main h4 strong,
+.main [data-testid="stMarkdownContainer"] h2 strong,
+.main [data-testid="stMarkdownContainer"] h3 strong,
+.main [data-testid="stMarkdownContainer"] h4 strong,
+.element-container h2 strong,
+.element-container h3 strong,
+.element-container h4 strong {
+    color: #ffffff !important;
+}
+
+/* Target specific headings by content pattern */
+.main h2:contains("Platform Statistics"),
+.main h2:contains("Quick Start Guide"),
+.main h4:contains("Ready to dive in"),
+.main h3:contains("Ready to Explore") {
+    color: #ffffff !important;
+}
+
+/* Override any markdown container rules for these specific elements */
+.main [data-testid="stMarkdownContainer"] h2:has(strong),
+.main [data-testid="stMarkdownContainer"] h3[style*="color: #ffffff"],
+.main [data-testid="stMarkdownContainer"] h4 {
+    color: #ffffff !important;
+}
+
+/* Nuclear option - target by text content using attribute selectors */
+.main h2[data-testid*="stMarkdown"] strong,
+.main h3[style*="color: #ffffff"],
+.main h4[style*="color"],
+.info-text h4 {
+    color: #ffffff !important;
+}
+
+/* FINAL OVERRIDE - Must be white text elements */
+.main strong,
+.main [style*="color: #ffffff"],
+.main [style*="color: rgb(255, 255, 255)"],
+.info-text h4,
+.info-text * {
+    color: #ffffff !important;
+}
+
+/* Professional Typography */
+h1 {
+    color: var(--text-primary) !important;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;
+    background: var(--gradient-professional);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    font-size: 1.875rem;
+    margin: 2rem 0 1rem 0;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 1.5rem 0 1rem 0;
+}
+
+h4 {
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 1rem 0 0.75rem 0;
+}
+
+/* Ensure all text is visible - but not in sidebar */
+.main p,
+.main span,
+.main div,
+.main label {
+    color: #0f172a !important;
+}
+
+/* Additional text visibility rules */
+.stApp .main p,
+.stApp .main span,
+.stApp .main div,
+.stApp .main h1,
+.stApp .main h2,
+.stApp .main h3,
+.stApp .main h4,
+.stApp .main h5,
+.stApp .main h6 {
+    color: #0f172a !important;
+}
+
+/* Force text color on all elements */
+[data-testid="stAppViewContainer"] .main *,
+[data-testid="stAppViewContainer"] .main p,
+[data-testid="stAppViewContainer"] .main span,
+[data-testid="stAppViewContainer"] .main div {
+    color: #0f172a !important;
+}
+
+/* Ultra-aggressive text visibility rules - but exclude sidebar */
+*:not(.sidebar):not(.sidebar *):not([data-testid="stSidebar"]):not([data-testid="stSidebar"] *) {
+    color: #0f172a !important;
+}
+
+.stApp *:not(.sidebar):not(.sidebar *):not([data-testid="stSidebar"]):not([data-testid="stSidebar"] *) {
+    color: #8CCDEB !important;
+}
+
+.main * {
+    color: #0f172a !important;
+}
+
+/* Override Streamlit's default text colors */
+.stMarkdown,
+.stMarkdown *,
+.stMarkdown p,
+.stMarkdown span,
+.stMarkdown div,
+.stMarkdown h1,
+.stMarkdown h2,
+.stMarkdown h3,
+.stMarkdown h4,
+.stMarkdown h5,
+.stMarkdown h6 {
+    color: #0f172a !important;
+}
+
+/* Force visibility on all possible selectors */
+[data-testid="stMarkdownContainer"],
+[data-testid="stMarkdownContainer"] *,
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] span,
+[data-testid="stMarkdownContainer"] div {
+    color: #0f172a !important;
+}
+
+/* Override any inherited styles */
+.element-container,
+.element-container *,
+.element-container p,
+.element-container span,
+.element-container div {
+    color: #0f172a !important;
+}
+
+/* Override inline styles specifically */
+[style*="color: #718096"] {
+    color: #0f172a !important;
+}
+
+[style*="color:#718096"] {
+    color: #0f172a !important;
+}
+
+/* Override any light colored text */
+[style*="color: #a0aec0"],
+[style*="color:#a0aec0"],
+[style*="color: #cbd5e1"],
+[style*="color:#cbd5e1"],
+[style*="color: #94a3b8"],
+[style*="color:#94a3b8"] {
+    color: #0f172a !important;
+}
+
+/* Force all text in main content to be dark */
+.main [style*="color"] {
+    color: #0f172a !important;
+}
+
+/* Override specific inline color styles */
+.main p[style*="color"],
+.main span[style*="color"],
+.main div[style*="color"],
+.main h1[style*="color"],
+.main h2[style*="color"],
+.main h3[style*="color"],
+.main h4[style*="color"],
+.main h5[style*="color"],
+.main h6[style*="color"] {
+    color: #0f172a !important;
+}
+
+/* Specific text visibility fixes - exclude sidebar */
+.main .stMarkdown p {
+    color: var(--text-primary) !important;
+}
+
+.main .stMarkdown h1,
+.main .stMarkdown h2,
+.main .stMarkdown h3,
+.main .stMarkdown h4,
+.main .stMarkdown h5,
+.main .stMarkdown h6 {
+    color: var(--text-primary) !important;
+}
+
+.main .stMarkdown span {
+    color: var(--text-primary) !important;
+}
+
+.main .stMarkdown li {
+    color: var(--text-primary) !important;
+}
+
+/* Sidebar markdown should be white */
+.sidebar .stMarkdown p {
+    color: #ffffff !important;
+}
+
+.sidebar .stMarkdown h1,
+.sidebar .stMarkdown h2,
+.sidebar .stMarkdown h3,
+.sidebar .stMarkdown h4,
+.sidebar .stMarkdown h5,
+.sidebar .stMarkdown h6 {
+    color: #ffffff !important;
+}
+
+.sidebar .stMarkdown span {
+    color: #ffffff !important;
+}
+
+.sidebar .stMarkdown li {
+    color: #ffffff !important;
+}
+
+/* Additional text visibility fixes */
+.element-container p {
+    color: var(--text-primary) !important;
+}
+
+.element-container span {
+    color: var(--text-primary) !important;
+}
+
+.element-container div {
+    color: var(--text-primary) !important;
+}
+
+/* Streamlit specific text elements */
+.stText {
+    color: var(--text-primary) !important;
+}
+
+.stCaption {
+    color: var(--text-secondary) !important;
+}
+
+.stCode {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-tertiary) !important;
+}
+
+/* Tab content text */
+.stTabs [data-baseweb="tab-panel"] {
+    color: var(--text-primary) !important;
+}
+
+.stTabs [data-baseweb="tab-panel"] p {
+    color: var(--text-primary) !important;
+}
+
+.stTabs [data-baseweb="tab-panel"] span {
+    color: var(--text-primary) !important;
+}
+
+/* Metric text */
+.stMetric {
+    color: var(--text-primary) !important;
+}
+
+.stMetric label {
+    color: var(--text-secondary) !important;
+}
+
+.stMetric div {
+    color: var(--text-primary) !important;
+}
+
+/* Info boxes and alerts */
+.stInfo {
+    color: var(--text-primary) !important;
+}
+
+.stSuccess {
+    color: var(--text-primary) !important;
+}
+
+.stWarning {
+    color: var(--text-primary) !important;
+}
+
+.stError {
+    color: var(--text-primary) !important;
+}
+
+/* Enhanced Components */
+.stAlert {
+    border-radius: 12px;
+    border: none;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+}
+
+.stDataFrame {
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.stDataFrame>div {
+    border-radius: 12px;
+}
+
+/* Professional Card Components */
+.metric-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-colored);
+    border: 1px solid rgba(30, 64, 175, 0.1);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-professional);
+    border-radius: 16px 16px 0 0;
+}
+
+.metric-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(30, 64, 175, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-2xl);
+    border-color: rgba(30, 64, 175, 0.2);
+}
+
+.metric-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    background: var(--gradient-professional);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 2;
+}
+
+.metric-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 2;
+}
+
+.dashboard-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.94));
+    border-radius: 18px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(30, 64, 175, 0.1);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient-professional);
+    border-radius: 18px 18px 0 0;
+}
+
+.dashboard-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(8, 145, 178, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-2xl);
+    border-color: rgba(30, 64, 175, 0.2);
+}
+
+.dashboard-card h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.info-text {
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    backdrop-filter: blur(10px);
+}
+
+.success-card {
+    background: linear-gradient(145deg, rgba(78, 205, 196, 0.1), rgba(68, 160, 141, 0.1));
+    border: 1px solid rgba(78, 205, 196, 0.2);
+    border-left: 4px solid var(--success-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+}
+
+.warning-card {
+    background: linear-gradient(145deg, rgba(255, 230, 109, 0.1), rgba(255, 193, 7, 0.1));
+    border: 1px solid rgba(255, 230, 109, 0.2);
+    border-left: 4px solid var(--warning-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+}
+
+.error-card {
+    background: linear-gradient(145deg, rgba(255, 107, 107, 0.1), rgba(220, 53, 69, 0.1));
+    border: 1px solid rgba(255, 107, 107, 0.2);
+    border-left: 4px solid var(--error-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+}
+
+/* Professional Interactive Elements */
+.stButton>button {
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 12px;
+    color: var(--text-white);
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-colored);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.01em;
+}
+
+.stButton>button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.stButton>button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    border-radius: 12px;
+}
+
+.stButton>button:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-xl);
+    background: var(--gradient-accent);
+}
+
+.stButton>button:hover::before {
+    left: 100%;
+}
+
+.stButton>button:active {
+    transform: translateY(-1px) scale(1.005);
+}
+
+.tab-content {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 0 0 16px 16px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+}
+
+.simulation-controls {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(30, 64, 175, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Professional Streamlit Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(30, 64, 175, 0.1);
+    color: var(--primary-color);
+}
+
+.stTabs [aria-selected="true"] {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Professional Metrics */
+.stMetric {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(30, 64, 175, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stMetric:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stMetric [data-testid="metric-container"]>div:first-child {
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stMetric [data-testid="metric-container"]>div:nth-child(2) {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.upload-section {
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    border: 2px dashed var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.upload-section:hover {
+    border-color: var(--secondary-color);
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+}
+
+.upload-section::before {
+    content: '📁';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.stTabs [aria-selected="true"] {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Form Elements */
+.stSelectbox>div>div {
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stSelectbox>div>div:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.stTextInput>div>div>input {
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stTextInput>div>div>input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.stNumberInput>div>div>input {
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stNumberInput>div>div>input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* File Uploader Enhancement */
+.stFileUploader>div {
+    border-radius: 16px;
+    border: 2px dashed var(--primary-color);
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    transition: all 0.3s ease;
+}
+
+.stFileUploader>div:hover {
+    border-color: var(--secondary-color);
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+}
+
+/* Progress Bar Enhancement */
+.stProgress>div>div {
+    background: var(--gradient-primary);
+    border-radius: 10px;
+}
+
+/* Enhanced Navigation Menu */
+.sidebar .stRadio>div {
+    background: transparent;
+    border: none;
+    padding: 0 1rem;
+}
+
+.sidebar .stRadio>div>label {
+    display: none !important;
+}
+
+.sidebar .stRadio>div>div {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hide default radio buttons */
+.sidebar .stRadio input[type="radio"] {
+    display: none !important;
+}
+
+.sidebar .stRadio>div>div>label {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 1.2rem 1.8rem;
+    margin: 0.4rem 0.8rem;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Force radio button text to be white */
+.sidebar .stRadio>div>div>label span {
+    color: #ffffff !important;
+}
+
+.sidebar .stRadio>div>div>label div {
+    color: #ffffff !important;
+}
+
+.sidebar .stRadio>div>div>label * {
+    color: #ffffff !important;
+}
+
+.sidebar .stRadio>div>div>label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.sidebar .stRadio>div>div>label:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.25));
+    border-color: rgba(99, 102, 241, 0.5);
+    transform: translateX(6px) scale(1.02);
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.3),
+        0 4px 12px rgba(139, 92, 246, 0.2);
+    color: var(--text-white) !important;
+}
+
+.sidebar .stRadio>div>div>label:hover::before {
+    left: 100%;
+}
+
+/* Selected state */
+.sidebar .stRadio>div>div>label[data-checked="true"] {
+    background: var(--gradient-primary) !important;
+    border-color: var(--primary-light) !important;
+    color: var(--text-white) !important;
+    font-weight: 700 !important;
+    transform: translateX(10px) scale(1.05);
+    box-shadow:
+        0 12px 30px rgba(99, 102, 241, 0.4),
+        0 6px 15px rgba(139, 92, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Icons */
+.nav-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.sidebar-footer-text {
+    color: #a0aec0;
+    font-size: 0.75rem;
+    margin: 0;
+    opacity: 0.7;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar .sidebar-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar .sidebar-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.sidebar .sidebar-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 3px;
+}
+
+.sidebar .sidebar-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2, #f093fb);
+}
+
+/* Loading Spinner */
+.stSpinner>div {
+    border-color: var(--primary-color) !important;
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main>.block-container {
+        padding: 1rem;
+        margin: 0.5rem;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .metric-card,
+    .dashboard-card {
+        padding: 1.5rem;
+    }
+}
+
+.stTabs [data-baseweb="tab"] {
+    background-color: #f0f2f6;
+    border-radius: 4px 4px 0px 0px;
+    padding: 10px 16px;
+    height: auto;
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: #3498db !important;
+    color: white !important;
+}
